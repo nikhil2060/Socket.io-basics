@@ -29,7 +29,14 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("User disconnected", socket.id);
   });
+
+  socket.on("join-room", (roomName) => {
+    socket.join(roomName);
+    console.log(`User joined room named ${roomName}`);
+  });
 });
+
+io.use((socket, next) => {});
 
 const port = 4000;
 
